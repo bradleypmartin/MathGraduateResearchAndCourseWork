@@ -21,7 +21,7 @@ ynodesQUERY = ynodes;
 
 % creation of interpolation operator
 tic;
-interpmatrix = dzeroIMQpluspolyaltpoint(xnodesREF,ynodesREF,...
+interpmatrix = createRbfInterpolantStencils(xnodesREF,ynodesREF,...
     xnodesQUERY,ynodesQUERY,0,1,0,1,0.2,49,6);
 toc;
 

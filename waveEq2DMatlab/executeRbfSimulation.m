@@ -1,5 +1,5 @@
 function datastore = ...
-    EWERBF1hybHO(bigLmatrix,bigDampMatrix,gamma,endtime,k,initdatavec,storesteps,...
+    executeRbfSimulation(bigLmatrix,bigDampMatrix,gamma,endtime,k,initdatavec,storesteps,...
     spaceSigma,xnodes,ynodes,N,explFlag,FDflagMat,lambdaMuVec,rhoVec,FDorder)
 
 % This function carries out RK4 time stepping of an RBF-FD/traditional FD
@@ -61,7 +61,7 @@ for rowCounter = 1:N1D
         locFDorder = locFDorder-1;
     end
     
-    preWeights = weights(0,-locFDorder/2:locFDorder/2,1);
+    preWeights = BengtsWeights(0,-locFDorder/2:locFDorder/2,1);
     preColIdx = (-locFDorder/2:locFDorder/2)+(rowCounter-1);
     colIdx = mod(preColIdx,N1D)+1;
     
@@ -70,7 +70,7 @@ for rowCounter = 1:N1D
             preWeights(2,idxCounter)/h;
     end
     
-    preWeights = weights(0,-FDorder/2:FDorder/2,1);
+    preWeights = BengtsWeights(0,-FDorder/2:FDorder/2,1);
     preColIdx = (-FDorder/2:FDorder/2)+(rowCounter-1);
     colIdx = mod(preColIdx,N1D)+1;
     for idxCounter = 1:size(colIdx,2)
